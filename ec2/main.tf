@@ -10,7 +10,7 @@ resource "aws_spot_instance_request" "ec2" {
   instance_type          = var.instance_type
   vpc_security_group_ids = [aws_security_group.sg.id]
   tags                   = {
-    name = var.component["name"]
+    name = var.component
   }
   provisioner "remote-exec" {
 
