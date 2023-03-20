@@ -15,7 +15,7 @@ resource "aws_spot_instance_request" "ec2" {
   provisioner "remote-exec" {
 
     connection {
-      host     = self.private_ip
+      host     = self.public_ip
       user     = "centos"
       password = "DevOps321"
     }
