@@ -47,3 +47,4 @@ resource "aws_route53_record" "route53" {
   records = var.component["private_ip"]
 }
 variable "component" {}
+variable "instance_type" {}
