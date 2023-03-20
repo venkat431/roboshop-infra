@@ -59,7 +59,7 @@ resource "aws_route53_record" "route53" {
   name    = "${var.component}-${var.env}.devops-practice.tech"
   type    = "A"
   ttl     = 30
-  records = aws_spot_instance_request.ec2.private_ip
+  records = [aws_spot_instance_request.ec2.private_ip]
 }
 variable "component" {}
 variable "instance_type" {}
