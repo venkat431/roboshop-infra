@@ -12,6 +12,7 @@ resource "aws_spot_instance_request" "ec2" {
   wait_for_fulfillment   = true
   tags                   = {
     name = var.component
+
   }
   provisioner "remote-exec" {
 
@@ -23,7 +24,8 @@ resource "aws_spot_instance_request" "ec2" {
     inline = [
       "sudo set-hostname ${var.component}",
       "git clone https://github.com/venkat431/roboshop-shell",
-      #"sudo bash ${var.component}.sh"
+      "cd roboshop-shell",
+      "sudo bash ${var.component}.sh"
     ]
   }
 
