@@ -13,7 +13,7 @@ resource "aws_spot_instance_request" "ec2" {
   tags                   = {
     name = var.component
   }
- /* provisioner "remote-exec" {
+  provisioner "remote-exec" {
 
     connection {
       host     = self.public_ip
@@ -26,7 +26,7 @@ resource "aws_spot_instance_request" "ec2" {
       #"sudo bash ${var.component}.sh"
     ]
   }
- */# bucket = ""
+
 }
 
 
