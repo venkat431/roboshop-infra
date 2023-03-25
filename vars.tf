@@ -24,6 +24,10 @@ variable "component" {
       name = "cart"
       type = "t3.micro"
     }
+    rabbitmq = {
+      name = "rabbitmq"
+      type = "t3.micro"
+    }
     mysql = {
       name = "mysql"
       type = "t3.micro"
