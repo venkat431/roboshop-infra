@@ -26,7 +26,7 @@ resource "aws_spot_instance_request" "ec2" {
       "sudo bash ${var.component}.sh"
     ]
   }
-  bucket = ""
+ # bucket = ""
 }
 
 
