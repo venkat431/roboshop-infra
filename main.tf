@@ -4,7 +4,7 @@ module "ec2" {
   component     = each.value["name"]
   instance_type = each.value["type"]
   tags          = {
-    Name = each.value[var.component]
+    Name = var.component
   }
 }
 
