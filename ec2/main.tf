@@ -5,10 +5,11 @@ data "aws_ami" "ami" {
 }
 
 
-resource "aws_instance" "ec2" {
+resource "aws_spot_instance_request" "ec2" {
   ami                    = data.aws_ami.ami.id
   instance_type          = var.instance_type
   vpc_security_group_ids = [aws_security_group.sg.id]
+  wait_for_fulfillment   = true
   tags                   = {
     name = var.component
   }
@@ -25,6 +26,7 @@ resource "aws_instance" "ec2" {
       "sudo bash ${var.component}.sh"
     ]
   }
+  bucket = ""
 }
 
 
@@ -58,7 +60,7 @@ resource "aws_route53_record" "route53" {
   name    = "${var.component}-${var.env}.devops-practice.tech"
   type    = "A"
   ttl     = 30
-  records = [aws_instance.ec2.private_ip]
+  records = [aws_spot_instance_request.ec2.private_ip]
 }
 variable "component" {}
 variable "instance_type" {}
