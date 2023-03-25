@@ -23,8 +23,8 @@ resource "aws_instance" "ec2" {
     }
     inline = [
       "sudo set-hostname ${var.component}",
-      "git clone https://github.com/venkat431/roboshop-shell",
-      "cd roboshop-shell",
+      "git clone https://github.com/venkat431/Roboshop-shell",
+      "cd Roboshop-shell",
       "sudo bash ${var.component}.sh"
     ]
   }
