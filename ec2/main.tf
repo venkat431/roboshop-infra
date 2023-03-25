@@ -64,6 +64,7 @@ resource "aws_route53_record" "route53" {
 }
 variable "component" {}
 variable "instance_type" {}
+variable "tags" {}
 variable "env" {
   default = "dev"
 }
