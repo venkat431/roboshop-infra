@@ -23,7 +23,7 @@ resource "aws_spot_instance_request" "ec2" {
     inline = [
       "sudo set-hostname ${var.component}",
       "git clone https://github.com/venkat431/roboshop-shell",
-      "sudo bash ${var.component}.sh"
+      #"sudo bash ${var.component}.sh"
     ]
   }
  # bucket = ""
