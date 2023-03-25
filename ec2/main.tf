@@ -11,7 +11,7 @@ resource "aws_spot_instance_request" "ec2" {
   vpc_security_group_ids = [aws_security_group.sg.id]
   wait_for_fulfillment   = true
   tags                   = {
-    name = var.component
+    Name = var.component
 
   }
   provisioner "remote-exec" {
