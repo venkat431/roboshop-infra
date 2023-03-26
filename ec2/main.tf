@@ -17,6 +17,7 @@ resource "aws_instance" "ec2" {
   }
 }
 
+#Provisioner resource decoupled from ec2, for better creation of instances
 resource "null_resource" "provisioner" {
   provisioner "remote-exec" {
 
