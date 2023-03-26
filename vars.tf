@@ -34,15 +34,15 @@ variable "component" {
       type = "t3.micro"
       password = "RoboShop@1"
     }
+    payment = {
+      name     = "payment"
+      type     = "t3.micro"
+      password = "roboshop123"
+    }
     shipping = {
       name = "shipping"
       type = "t3.micro"
       password = "RoboShop@1"
     }
-    payment = {
-      name = "payment"
-      type = "t3.micro"
-      password = "roboshop123"
-   }
   }
 }
