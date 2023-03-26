@@ -4,7 +4,7 @@ variable "component" {
       name = "frontend"
       type = "t3.micro"
     }
-   /* mongodb = {
+    mongodb = {
       name = "mongodb"
       type = "t3.micro"
     }
@@ -39,6 +39,6 @@ variable "component" {
     payment = {
       name = "payment"
       type = "t3.micro"
-   }*/
+   }
   }
 }
