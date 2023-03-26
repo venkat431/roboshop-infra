@@ -22,8 +22,8 @@ resource "aws_instance" "ec2" {
       password = "DevOps321"
     }
     inline = [
-      "git clone https://github.com/venkat431/Roboshop-shell.git",
       "sudo set-hostname ${var.component}",
+      "git clone https://github.com/venkat431/Roboshop-shell.git",
       "cd Roboshop-shell",
       "sudo bash ${var.component}.sh"
     ]
