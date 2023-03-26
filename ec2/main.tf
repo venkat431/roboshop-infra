@@ -30,6 +30,13 @@ resource "aws_instance" "ec2" {
   }
 
 }
+resource "aws_route53_record" "route53" {
+  zone_id = "Z08931683BP7DV5GJ0PAA"
+  name    = "${var.component}-${var.env}.devops-practice.tech"
+  type    = "A"
+  ttl     = 30
+  records = [aws_instance.ec2.private_ip]
+}
 
 
 resource "aws_security_group" "sg" {
@@ -57,13 +64,7 @@ resource "aws_security_group" "sg" {
   }
 }
 
-resource "aws_route53_record" "route53" {
-  zone_id = "Z08931683BP7DV5GJ0PAA"
-  name    = "${var.component}-${var.env}.devops-practice.tech"
-  type    = "A"
-  ttl     = 30
-  records = [aws_instance.ec2.private_ip]
-}
+
 variable "component" {}
 variable "instance_type" {}
 variable "env" {
