@@ -27,7 +27,6 @@ resource "null_resource" "provisioner" {
       password = "DevOps321"
     }
     inline = [
-      "sudo set-hostname ${var.component}",
       "git clone https://github.com/venkat431/Roboshop-shell.git",
       "cd Roboshop-shell",
       "sudo bash ${var.component}.sh"
