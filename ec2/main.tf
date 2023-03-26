@@ -10,6 +10,7 @@ resource "aws_instance" "ec2" {
   instance_type          = var.instance_type
   vpc_security_group_ids = [aws_security_group.sg.id]
  # wait_for_fulfillment   = true
+
   tags                   = {
     Name = var.component
 
@@ -22,7 +23,6 @@ resource "aws_instance" "ec2" {
       password = "DevOps321"
     }
     inline = [
-      "sudo set-hostname ${var.component}",
       "git clone https://github.com/venkat431/Roboshop-shell.git",
       "cd Roboshop-shell",
       "sudo bash ${var.component}.sh"
@@ -30,18 +30,10 @@ resource "aws_instance" "ec2" {
   }
 
 }
-resource "aws_route53_record" "route53" {
-  zone_id = "Z08931683BP7DV5GJ0PAA"
-  name    = "${var.component}-${var.env}.devops-practice.tech"
-  type    = "A"
-  ttl     = 30
-  records = [aws_instance.ec2.private_ip]
-}
-
 
 resource "aws_security_group" "sg" {
   name        = "${var.component}-${var.env}-sg"
-  description = "Allow TLS inbound traffic"
+  description = "${var.component}-${var.env}-sg"
 
 
   ingress {
@@ -63,6 +55,15 @@ resource "aws_security_group" "sg" {
     Name = "${var.component}-${var.env}-sg"
   }
 }
+
+resource "aws_route53_record" "route53" {
+  zone_id = "Z08931683BP7DV5GJ0PAA"
+  name    = "${var.component}-${var.env}.devops-practice.tech"
+  type    = "A"
+  ttl     = 30
+  records = [aws_instance.ec2.private_ip]
+}
+
 
 
 variable "component" {}
