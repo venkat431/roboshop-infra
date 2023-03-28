@@ -25,25 +25,25 @@ resource "aws_spot_instance_request" "ec2" {
   }
 }
 
-#Provisioner resource decoupled from ec2, for better creation of instances
-resource "null_resource" "provisioner" {
-  provisioner "remote-exec" {
-
-    connection {
-      host     = aws_spot_instance_request.ec2.private_ip
-      user     = "centos"
-      password = "DevOps321"
-    }
-    inline = [
-      "sudo set-hostname -skip-apply ${var.component}"
-
-#      "sudo labauto ansible"
-#      "git clone https://github.com/venkat431/Roboshop-shell.git",
-#      "cd Roboshop-shell",
-#      "sudo bash ${var.component}.sh ${var.password}"
-    ]
-  }
-}
+##Provisioner resource decoupled from ec2, for better creation of instances
+#resource "null_resource" "provisioner" {
+#  provisioner "remote-exec" {
+#
+#    connection {
+#      host     = aws_spot_instance_request.ec2.private_ip
+#      user     = "centos"
+#      password = "DevOps321"
+#    }
+#    inline = [
+#      "sudo set-hostname -skip-apply ${var.component}"
+#
+##      "sudo labauto ansible"
+##      "git clone https://github.com/venkat431/Roboshop-shell.git",
+##      "cd Roboshop-shell",
+##      "sudo bash ${var.component}.sh ${var.password}"
+#    ]
+#  }
+#}
 
 # creating sg resources for all instances
 resource "aws_security_group" "sg" {
