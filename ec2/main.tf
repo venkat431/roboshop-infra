@@ -33,13 +33,14 @@ resource "null_resource" "provisioner" {
       user     = "centos"
       password = "DevOps321"
     }
-#    inline = [
-#      "sudo labauto ansible"
+    inline = [
+    "sudo set-hostname ${var.component}"
 
+#      "sudo labauto ansible"
 #      "git clone https://github.com/venkat431/Roboshop-shell.git",
 #      "cd Roboshop-shell",
 #      "sudo bash ${var.component}.sh ${var.password}"
-#    ]
+    ]
   }
 }
 resource "aws_security_group" "sg" {
