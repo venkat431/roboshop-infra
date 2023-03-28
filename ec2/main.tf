@@ -6,12 +6,13 @@
 
 data "aws_caller_identity" "current" {}
 
+# Declaring a data module for ami (amazon machine image)
 data "aws_ami" "ami" {
   most_recent = true
   name_regex = "devops-ansible"
   owners = [data.aws_caller_identity.current.account_id]
 }
-
+#  Creating Spot instances for Roboshop
 resource "aws_spot_instance_request" "ec2" {
   ami                    = data.aws_ami.ami.id
   instance_type          = var.instance_type
@@ -43,6 +44,8 @@ resource "null_resource" "provisioner" {
     ]
   }
 }
+
+# creating sg resources for all instances
 resource "aws_security_group" "sg" {
   name        = "${var.component}-${var.env}-sg"
   description = "${var.component}-${var.env}-sg"
@@ -68,6 +71,7 @@ resource "aws_security_group" "sg" {
   }
 }
 
+# Individual route53 records for all instances
 resource "aws_route53_record" "route53" {
   zone_id = "Z08931683BP7DV5GJ0PAA"
   name    = "${var.component}-${var.env}.devops-practice.tech"
