@@ -12,11 +12,11 @@ data "aws_ami" "ami" {
   owners = [data.aws_caller_identity.current.account_id]
 }
 
-resource "aws_instance" "ec2" {
+resource "aws_spot_instance_request" "ec2" {
   ami                    = data.aws_ami.ami.id
   instance_type          = var.instance_type
   vpc_security_group_ids = [aws_security_group.sg.id]
- # wait_for_fulfillment   = true
+  wait_for_fulfillment   = true
 
   tags                   = {
     Name = var.component
@@ -29,7 +29,7 @@ resource "null_resource" "provisioner" {
   provisioner "remote-exec" {
 
     connection {
-      host     = aws_instance.ec2.private_ip
+      host     = aws_spot_instance_request.ec2.private_ip
       user     = "centos"
       password = "DevOps321"
     }
@@ -72,7 +72,7 @@ resource "aws_route53_record" "route53" {
   name    = "${var.component}-${var.env}.devops-practice.tech"
   type    = "A"
   ttl     = 30
-  records = [aws_instance.ec2.private_ip]
+  records = [aws_spot_instance_request.ec2.private_ip]
 }
 
 
@@ -82,4 +82,4 @@ variable "instance_type" {}
 variable "env" {
   default = "dev"
 }
-variable "password" {}
+#variable "password" {}
