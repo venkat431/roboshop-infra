@@ -4,6 +4,16 @@
 #  owners = [973714476881]
 #}
 
+# To create the tfstate file in s3 bucket
+terraform {
+  backend "s3" {
+    bucket = "terraform-31"
+    key    = "05-s3-state/terraform.tfstate"
+    region = "us-east-1"
+  }
+}
+
+
 data "aws_caller_identity" "current" {}
 
 # Declaring a data module for ami (amazon machine image)
