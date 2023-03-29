@@ -45,8 +45,7 @@ resource "null_resource" "provisioner" {
       password = "DevOps321"
     }
     inline = [
-      "echo hello"
-#      "sudo set-hostname -skip-apply ${var.component}"
+       "sudo set-hostname -skip-apply ${var.component}"
 
 #      "sudo labauto ansible"
 #      "git clone https://github.com/venkat431/Roboshop-shell.git",
