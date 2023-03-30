@@ -26,7 +26,7 @@ variable "component" {
     }
     rabbitmq = {
       name = "rabbitmq"
-      type = "t3.small"
+      type = "t3.micro"
 #      password = "roboshop123"
     }
     mysql = {
