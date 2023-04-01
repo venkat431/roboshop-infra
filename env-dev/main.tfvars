@@ -1,6 +1,6 @@
 component = {
   frontend = {
     name = "frontend"
-    type = "t3.nano"
+    type = "t3.micro"
   }
 }
