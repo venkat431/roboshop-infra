@@ -1,3 +1,3 @@
 parameters= [
-  { name = "test", value= "hello 1", type= "String"}
+  { name = "test", value= "hello 1", type= "SecureString"}
 ]
