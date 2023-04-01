@@ -38,7 +38,7 @@ resource "null_resource" "provisioner" {
     }
     inline = [
        "sudo set-hostname -skip-apply ${var.component}",
-      "ansible-pull -i localhost -U https://github.com/venkat431/roboshop-ansible roboshop.yml -e role_name=${var.component}"
+#      "ansible-pull -i localhost -U https://github.com/venkat431/roboshop-ansible roboshop.yml -e role_name=${var.component}"
 
 #      "sudo labauto ansible"
 #      "git clone https://github.com/venkat431/Roboshop-shell.git",
