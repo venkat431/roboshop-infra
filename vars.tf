@@ -1,4 +1,4 @@
-variable "component" {
+variable "component" {}
 #  default = {
 #    frontend = {
 #      name = "frontend"
@@ -45,4 +45,6 @@ variable "component" {
 ##      password = "RoboShop@1"
 #    }
 #  }
-}
+#}
+
+variable "env" {}
