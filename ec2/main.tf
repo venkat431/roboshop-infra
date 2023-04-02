@@ -1,19 +1,3 @@
-#data "aws_ami" "ami" {
-#  most_recent = true
-#  name_regex = "Centos-8-DevOps-Practice"
-#  owners = [973714476881]
-#}
-
-
-
-data "aws_caller_identity" "current" {}
-
-# Declaring a data module for ami (amazon machine image)
-data "aws_ami" "ami" {
-  most_recent = true
-  name_regex = "devops-ansible"
-  owners = [data.aws_caller_identity.current.account_id]
-}
 #  Creating Spot instances for Roboshop
 resource "aws_spot_instance_request" "ec2" {
   ami                    = data.aws_ami.ami.id
@@ -82,12 +66,3 @@ resource "aws_route53_record" "route53" {
   ttl     = 30
   records = [aws_spot_instance_request.ec2.private_ip]
 }
-
-
-
-variable "component" {}
-variable "instance_type" {}
-variable "env" {
-  default = "dev"
-}
-#variable "password" {}
