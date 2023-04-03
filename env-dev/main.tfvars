@@ -1,28 +1,28 @@
 component = {
-  frontend = {
-    name = "frontend"
-    type = "t3.micro"
-  }
+#  frontend = {
+#    name = "frontend"
+#    type = "t3.micro"
+#  }
   mongodb = {
     name = "mongodb"
     type = "t3.micro"
   }
-  catalogue = {
-    name = "catalogue"
-    type = "t3.micro"
-  }
+#  catalogue = {
+#    name = "catalogue"
+#    type = "t3.micro"
+#  }
   redis = {
     name = "redis"
     type = "t3.micro"
   }
-  user = {
-    name = "user"
-    type = "t3.micro"
-  }
-  cart = {
-    name = "cart"
-    type = "t3.micro"
-  }
+#  user = {
+#    name = "user"
+#    type = "t3.micro"
+#  }
+#  cart = {
+#    name = "cart"
+#    type = "t3.micro"
+#  }
   rabbitmq = {
     name = "rabbitmq"
     type = "t3.micro"
@@ -33,16 +33,16 @@ component = {
     type = "t3.micro"
     #      password = "RoboShop@1"
   }
-  payment = {
-    name     = "payment"
-    type     = "t3.micro"
-    #      password = "roboshop123"
-  }
-  shipping = {
-    name = "shipping"
-    type = "t3.micro"
-    #      password = "RoboShop@1"
-  }
+#  payment = {
+#    name     = "payment"
+#    type     = "t3.micro"
+#    #      password = "roboshop123"
+#  }
+#  shipping = {
+#    name = "shipping"
+#    type = "t3.micro"
+#    #      password = "RoboShop@1"
+#  }
 }
 
 env= "dev"
