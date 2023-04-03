@@ -14,7 +14,6 @@ resource "aws_spot_instance_request" "ec2" {
 
 #Provisioner resource decoupled from ec2, for better creation of instances
 resource "null_resource" "provisioner" {
-  depends_on = [aws_iam_role.role]
   provisioner "remote-exec" {
 
     connection {
@@ -87,7 +86,7 @@ resource "aws_iam_policy" "ssm-policy" {
           "ssm:GetParameters",
           "ssm:GetParameter"
         ],
-        "Resource": "arn:aws:ssm:us-east-1:496431305037:parameter/${var.env}.${var.component}.*"
+        "Resource": "arn:aws:ssm:us-east-1:496431305037:parameter/${var.env}.${var.component}*"
       },
       {
         "Sid": "VisualEditor1",
