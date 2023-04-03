@@ -4,7 +4,7 @@ parameters= [
   { name = "dev.frontend.cart_url", value= "http://cart-dev.devops-practice.tech:8080/", type= "String"},
   { name = "dev.frontend.shipping_url", value= "http://shipping-dev.devops-practice.tech:8080/", type= "String"},
   { name = "dev.frontend.payment_url", value= "http://payment-dev.devops-practice.tech:8080/", type= "String"},
-  { name = "dev.cart.redis_host", value= "http://redis-dev.devops-practice.tech:8080/", type= "String"},
+  { name = "dev.cart.redis_host", value= "http://redis-dev.devops-practice.tech/", type= "String"},
   { name = "dev.cart.catalogue_host", value= "http://catalogue-dev.devops-practice.tech/", type= "String"},
   { name = "dev.cart.catalogue_port", value= "8080", type= "String"},
   { name = "dev.catalogue.mongo", value= "true", type= "String"},
