@@ -14,6 +14,7 @@ resource "aws_spot_instance_request" "ec2" {
 
 #Provisioner resource decoupled from ec2, for better creation of instances
 resource "null_resource" "provisioner" {
+  depends_on = [aws_iam_role.role]
   provisioner "remote-exec" {
 
     connection {
@@ -23,7 +24,7 @@ resource "null_resource" "provisioner" {
     }
     inline = [
        "sudo set-hostname -skip-apply ${var.component}",
-#      "ansible-pull -i localhost -U https://github.com/venkat431/roboshop-ansible roboshop.yml -e role_name=${var.component} -e env=${var.env}"
+      "ansible-pull -i localhost -U https://github.com/venkat431/roboshop-ansible roboshop.yml -e role_name=${var.component} -e env=${var.env}"
 
 #      "sudo labauto ansible"
 #      "git clone https://github.com/venkat431/Roboshop-shell.git",
